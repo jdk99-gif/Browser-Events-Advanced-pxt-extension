@@ -2,6 +2,11 @@ namespace browserEvents {
 
     // keyboard typing functionality
 
+    export enum KeyboardKey {
+        //% block="escape"
+        Escape
+    }
+
     export let keyButtons: KeyButton[] = [
         A, B, C, D, E, F, G, H, I, J, K, L, M,
         N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
@@ -16,6 +21,15 @@ namespace browserEvents {
         PageDown, End, Home, Escape
     ]
 
+    function keyboardKeyToButton(key: KeyboardKey): KeyButton {
+        switch (key) {
+            case KeyboardKey.Escape:
+                return Escape;
+            default:
+                return Escape;
+        }
+    }
+
     let mostRecentLetter: string;
 
     //% blockId=setupKeyboardInput
@@ -28,6 +42,14 @@ namespace browserEvents {
                 mostRecentLetter = keyToString(keyButton.id);
             })
         }
+    }
+
+    //% blockId=onKeyboardKeyPressed
+    //% block="on keyboard key $key pressed"
+    //% group="Keyboard"
+    //% weight=2
+    export function onKeyboardKeyPressed(key: KeyboardKey, handler: () => void) {
+        keyboardKeyToButton(key).onEvent(KeyEvent.Pressed, handler);
     }
 
     //% blockId=getMostRecentLetter

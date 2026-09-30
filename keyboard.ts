@@ -13,7 +13,7 @@ namespace browserEvents {
         Equals, OpenBracket, CloseBracket, 
         BackSlash, Space, PageUp, SemiColon,
         Apostrophe, Comma, Period, ForwardSlash,
-        PageDown, End, Home
+        PageDown, End, Home, Escape
     ]
 
     let mostRecentLetter: string;
